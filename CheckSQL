@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class CheckSQL
+{
+    public static void main(String [] args)
+    {
+        Scanner number = new Scanner(System.in);
+        int number = number.nextInt();
+        System.out.print(number);
+    }
+}
