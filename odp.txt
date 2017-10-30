@@ -1,4 +1,0 @@
-Zadanie 1
-select ciocia from wujek
-Zadanie 2
-select babcia from from dziadek
