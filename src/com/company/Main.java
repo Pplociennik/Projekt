@@ -1,14 +1,17 @@
 package com.company;
 
+import org.quartz.*;
+import org.quartz.impl.StdSchedulerFactory;
+
 import java.io.*;
 import java.util.Scanner;
 
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException, SchedulerException {
         int work = 1;
-        Zapis zapis = new Zapis();
+        Save zapis = new Save();
         while (work == 1) {
             // Runtime.getRuntime().exec("cls");
             System.out.println("Witaj! Wpis" +
@@ -75,6 +78,13 @@ public class Main {
             Scanner odczyt = new Scanner(System.in);
             work = odczyt.nextInt();
         }
+
+        Scheduler tc = StdSchedulerFactory.getDefaultScheduler();
+        JobDetail job2 = JobBuilder.newJob(CheckTime.class).build();
+        Trigger time = TriggerBuilder.newTrigger().withIdentity("CTrigger").withSchedule(CronScheduleBuilder.cronSchedule("0 * 8-19 ? * MON,TUE,WED,THU,FRI")).build();
+        tc.scheduleJob(job2, time);
+        tc.start();
+
         zapis.Zapisz();
         zapis.closefile();
     }

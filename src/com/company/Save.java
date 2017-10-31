@@ -3,8 +3,8 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Zapis {
-    public Zapis() throws FileNotFoundException {
+public class Save {
+    public Save() throws FileNotFoundException {
     }
 
     PrintWriter odpowiedzi = new PrintWriter("odp.txt");
